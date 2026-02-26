@@ -1,0 +1,54 @@
+/* PIXEL THEME - GLOBAL STYLES */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --neon-blue: #00f0ff;
+    --neon-green: #00ff00;
+    --bg-color: #050505;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3 { color: var(--neon-blue); text-shadow: 2px 2px #fff; text-transform: uppercase; }
+
+/* INPUTS & FORMS */
+input, select, textarea {
+    background-color: #000;
+    border: 2px solid var(--neon-blue);
+    color: #fff;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1.2rem;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: var(--neon-blue);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover { background-color: #fff; box-shadow: 4px 4px 0px var(--neon-blue); }
+
+/* TABLES (For your CRUD & Logs) */
+table { width: 100%; border-collapse: collapse; border: 2px solid #fff; margin-top: 20px; }
+th { background-color: #111; color: var(--neon-blue); border: 1px solid #fff; padding: 10px; }
+td { border: 1px solid #333; padding: 10px; }
+
+/* LINKS */
+a { color: var(--neon-blue); text-decoration: none; }
+a:hover { text-decoration: underline; background-color: var(--neon-blue); color: #000; }
+.error { color: red; border: 1px solid red; padding: 10px; display: inline-block; }
