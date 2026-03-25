@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoPoints &mdash; Staff Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .login-wrap {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 40px 20px; position: relative; z-index: 1;
+    }
+    .login-box {
+      width: 420px; max-width: 100%;
+      background: var(--card); border: 2px solid var(--cyan);
+      box-shadow: 10px 10px 0 var(--cyan-dk), 0 0 40px rgba(0,229,255,.1);
+      position: relative;
+    }
+    .login-box::before {
+      content: '>> STAFF_TERMINAL'; position: absolute; top: -30px; left: -2px;
+      background: var(--cyan); color: #000; font-size: .7rem; padding: 5px 14px; letter-spacing: 2px;
+    }
+    .login-header {
+      background: var(--surface); border-bottom: 2px solid var(--cyan-dk);
+      padding: 22px 28px; text-align: center;
+    }
+    .login-icon { font-size: 2.8rem; display: block; margin-bottom: 10px; filter: drop-shadow(0 0 10px var(--cyan)); }
+    .login-title { font-size: 1rem; color: var(--cyan); letter-spacing: 3px; text-shadow: 0 0 12px rgba(0,229,255,.4); margin-bottom: 4px; }
+    .login-sub { font-family: 'VT323', monospace; font-size: 1.1rem; color: var(--muted); letter-spacing: 1px; }
+    .login-body { padding: 28px; }
+    .role-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 26px; border: 2px solid var(--muted); }
+    .rtab {
+      font-family: 'Share Tech Mono', monospace; font-size: .65rem; letter-spacing: 2px;
+      padding: 10px; cursor: pointer; background: transparent; color: var(--muted);
+      border: none; transition: all .1s; text-align: center;
+    }
+    .rtab:first-child { border-right: 1px solid var(--muted); }
+    .rtab.active { background: var(--cyan); color: #000; }
+    .lfield { margin-bottom: 18px; }
+    .lfield label { display: block; font-size: .58rem; color: var(--muted); letter-spacing: 2px; margin-bottom: 7px; }
+    .lfield label::before { content: '// '; color: var(--cyan2); }
+    .lfield input {
+      width: 100%; background: #000; border: 2px solid var(--muted); color: var(--text);
+      font-family: 'Share Tech Mono', monospace; font-size: .75rem; padding: 11px 14px;
+      outline: none; transition: border-color .15s; letter-spacing: 1px;
+    }
+    .lfield input:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,229,255,.15); }
+    .lfield input::placeholder { color: var(--muted); }
+    .login-err {
+      background: rgba(255,60,60,.08); border: 1px solid var(--red); color: var(--red);
+      font-size: .6rem; letter-spacing: 1px; padding: 9px 12px; margin-bottom: 18px; display: none;
+    }
+    .login-err.show { display: block; }
+    .login-err::before { content: '!! '; }
+    .btn-login {
+      width: 100%; font-family: 'Share Tech Mono', monospace; font-size: .78rem; letter-spacing: 2px;
+      padding: 13px; cursor: pointer; background: var(--cyan); color: #000;
+      border: 2px solid var(--cyan); box-shadow: 0 0 14px rgba(0,229,255,.35), 4px 4px 0 var(--cyan-dk);
+      transition: all .1s; margin-bottom: 14px;
+    }
+    .btn-login:hover { background: #000; color: var(--cyan); box-shadow: 0 0 22px rgba(0,229,255,.6); transform: translate(-2px,-2px); }
+    .login-foot {
+      text-align: center; font-family: 'VT323', monospace; font-size: 1rem;
+      color: var(--muted); padding: 14px 28px; border-top: 1px solid var(--cyan-dk);
+    }
+    .login-foot a { color: var(--cyan); text-decoration: none; }
+    .login-foot a:hover { text-shadow: 0 0 8px var(--cyan); }
+    .blink-cursor::after { content: '_'; animation: blink 1s step-end infinite; color: var(--cyan); }
+    .demo-hint {
+      background: rgba(0,229,255,.05); border: 1px solid var(--cyan-dk);
+      padding: 10px 12px; margin-bottom: 18px; font-family: 'VT323', monospace;
+      font-size: 1rem; color: var(--muted); line-height: 1.7;
+    }
+    .demo-hint span { color: var(--cyan); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">ECO<span>POINTS</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="index.html#features">FEATURES</a></li>
+    <li><a href="index.html#events">EVENTS</a></li>
+    <li><a href="achievements.html">ACHIEVEMENTS</a></li>
+    <li><a href="staff-portal.html">STAFF PORTAL</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="index.html" class="btn btn-ghost">&larr; BACK</a>
+  </div>
+</nav>
+
+<div class="login-wrap">
+  <div class="login-box">
+    <div class="login-header">
+      <span class="login-icon">&#128737;</span>
+      <div class="login-title blink-cursor">STAFF ACCESS</div>
+      <div class="login-sub">Authorized personnel only. All activity is logged.</div>
+    </div>
+    <div class="login-body">
+
+      <div class="role-tabs">
+        <button class="rtab active" onclick="setRole('staff', this)">&#128295; STAFF</button>
+        <button class="rtab"        onclick="setRole('admin', this)">&#128737; ADMIN</button>
+      </div>
+
+      <div class="demo-hint">
+        // DEMO CREDENTIALS<br/>
+        STAFF &mdash; <span>staff@ecopoints.my</span> / <span>staff123</span><br/>
+        ADMIN &mdash; <span>admin@ecopoints.my</span> / <span>admin123</span>
+      </div>
+
+      <div class="login-err" id="loginErr">INVALID CREDENTIALS. ACCESS DENIED.</div>
+
+      <div class="lfield">
+        <label>EMAIL ADDRESS</label>
+        <input type="email" id="emailInput" placeholder="user@ecopoints.my" autocomplete="off"/>
+      </div>
+      <div class="lfield">
+        <label>PASSWORD</label>
+        <input type="password" id="passInput" placeholder="••••••••"/>
+      </div>
+
+      <button class="btn-login" onclick="doLogin()">&gt;&gt; AUTHENTICATE</button>
+
+    </div>
+    <div class="login-foot">
+      <a href="index.html">&larr; RETURN TO HOMEPAGE</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  var currentRole = 'staff';
+
+  function setRole(role, btn) {
+    currentRole = role;
+    document.querySelectorAll('.rtab').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('loginErr').classList.remove('show');
+    document.getElementById('emailInput').value = '';
+    document.getElementById('passInput').value  = '';
+  }
+
+  function doLogin() {
+    var email = document.getElementById('emailInput').value.trim();
+    var pass  = document.getElementById('passInput').value.trim();
+    var err   = document.getElementById('loginErr');
+
+    var creds = {
+      staff: { email: 'staff@ecopoints.my', pass: 'staff123', dest: 'staff.html' },
+      admin: { email: 'admin@ecopoints.my', pass: 'admin123', dest: 'admin.html'  }
+    };
+
+    var c = creds[currentRole];
+    if (email === c.email && pass === c.pass) {
+      err.classList.remove('show');
+      window.location.href = c.dest;
+    } else {
+      err.classList.add('show');
+    }
+  }
+
+  /* allow Enter key */
+  document.addEventListener('keydown', function(e){ if(e.key === 'Enter') doLogin(); });
+</script>
+</body>
+</html>

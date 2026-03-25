@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoPoints &mdash; Technical Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="staff.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">ECO<span>POINTS</span></a>
+  <ul class="nav-links">
+    <li><a href="staff.html">DASHBOARD</a></li>
+    <li><a href="staff-products.html">PRODUCTS</a></li>
+    <li><a href="staff-support.html" class="active">SUPPORT</a></li>
+    <li><a href="staff-recycling.html">RECYCLING</a></li>
+    <li><a href="achievements.html">ACHIEVEMENTS</a></li>
+  </ul>
+  <div style="font-size:.65rem;color:var(--muted);letter-spacing:1px;display:flex;align-items:center;gap:14px">
+    <span>STAFF: <span style="color:var(--cyan)">JESS_01</span> <span class="staff-nav-badge">STAFF</span></span>
+    <a href="staff-login.html" class="btn btn-ghost" style="font-size:.6rem;padding:6px 12px">LOGOUT</a>
+  </div>
+</nav>
+
+<div class="staff-page">
+
+  <!-- Header -->
+  <div class="staff-header">
+    <div class="staff-header-left">
+      <div class="staff-page-label">STAFF_PORTAL / SUPPORT</div>
+      <h1 class="staff-page-title">TECHNICAL <span>SUPPORT</span></h1>
+      <p class="staff-page-sub">Manage and resolve user support tickets.</p>
+    </div>
+    <div class="staff-header-right">
+      <div class="search-wrap"><input type="text" id="searchInput" placeholder="SEARCH TICKETS..." oninput="filterTickets()"/></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="staff-stats">
+    <div class="sstat"><div class="sstat-lbl">TOTAL TICKETS</div><div class="sstat-val">50</div></div>
+    <div class="sstat"><div class="sstat-lbl">OPEN</div><div class="sstat-val r">6</div></div>
+    <div class="sstat"><div class="sstat-lbl">PENDING REPLY</div><div class="sstat-val a">3</div></div>
+    <div class="sstat"><div class="sstat-lbl">RESOLVED</div><div class="sstat-val g">41</div></div>
+    <div class="sstat"><div class="sstat-lbl">AVG RESPONSE</div><div class="sstat-val">1.4 <span style="font-size:.6rem;color:var(--muted)">HRS</span></div></div>
+  </div>
+
+  <!-- Filter tabs -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+    <button class="fbtn active" data-f="all" onclick="setFilter('all',this)">ALL (50)</button>
+    <button class="fbtn" data-f="open"     onclick="setFilter('open',this)"    style="color:var(--red);border-color:var(--red)">OPEN (6)</button>
+    <button class="fbtn" data-f="pending"  onclick="setFilter('pending',this)" style="color:var(--amber);border-color:var(--amber)">PENDING (3)</button>
+    <button class="fbtn" data-f="resolved" onclick="setFilter('resolved',this)"style="color:var(--green);border-color:var(--green)">RESOLVED (41)</button>
+  </div>
+
+  <!-- Table -->
+  <div class="staff-table-wrap">
+    <div class="staff-table-head">
+      <span class="staff-table-head-title">SUPPORT TICKETS</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>TICKET ID</th>
+          <th>SUBMITTED BY</th>
+          <th>CATEGORY</th>
+          <th>SUBJECT</th>
+          <th>STATUS</th>
+          <th>SUBMITTED</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody id="ticketBody">
+        <!-- populated by JS -->
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">ECO<span>POINTS</span></a>
+  <ul class="footer-links">
+    <li><a href="staff.html">DASHBOARD</a></li>
+    <li><a href="staff-products.html">PRODUCTS</a></li>
+    <li><a href="staff-recycling.html">RECYCLING</a></li>
+  </ul>
+  <span class="footer-copy">&copy; 2026 ECOPOINTS STAFF PORTAL</span>
+</footer>
+
+<!-- VIEW / REPLY MODAL -->
+<div class="smodal-bk" id="tktModal">
+  <div class="smodal" style="width:560px">
+    <div class="smodal-hdr">
+      <span class="smodal-hdr-t" id="tktModalTitle">VIEW TICKET</span>
+      <button class="smodal-x" onclick="closeModal('tktModal')">[ X ]</button>
+    </div>
+    <div class="smodal-body">
+      <div style="background:#000;border:2px solid var(--cyan-dk);padding:14px;margin-bottom:18px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+          <div>
+            <div style="font-size:.54rem;color:var(--muted);letter-spacing:2px;margin-bottom:4px">// TICKET ID</div>
+            <div id="vId" style="font-size:.75rem;color:var(--cyan)"></div>
+          </div>
+          <div>
+            <div style="font-size:.54rem;color:var(--muted);letter-spacing:2px;margin-bottom:4px">// USER</div>
+            <div id="vUser" style="font-size:.75rem;color:var(--text)"></div>
+          </div>
+          <div>
+            <div style="font-size:.54rem;color:var(--muted);letter-spacing:2px;margin-bottom:4px">// CATEGORY</div>
+            <div id="vCat" style="font-size:.75rem;color:var(--muted)"></div>
+          </div>
+          <div>
+            <div style="font-size:.54rem;color:var(--muted);letter-spacing:2px;margin-bottom:4px">// STATUS</div>
+            <div id="vStatus"></div>
+          </div>
+        </div>
+        <div style="font-size:.54rem;color:var(--muted);letter-spacing:2px;margin-bottom:6px">// MESSAGE</div>
+        <div id="vMsg" style="font-family:'VT323',monospace;font-size:1.1rem;color:var(--text);line-height:1.7;border-left:3px solid var(--cyan);padding-left:10px"></div>
+      </div>
+      <div class="sfield" id="replyField">
+        <label>STAFF REPLY</label>
+        <textarea id="replyText" placeholder="Type your reply here..." rows="4"></textarea>
+      </div>
+    </div>
+    <div class="smodal-foot">
+      <button class="smbtn smbtn-cancel" onclick="closeModal('tktModal')">CLOSE</button>
+      <button class="smbtn smbtn-green" id="resolveBtn" onclick="resolveTicket()">&gt;&gt; MARK RESOLVED</button>
+      <button class="smbtn smbtn-primary" onclick="sendReply()">&gt;&gt; SEND REPLY</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var tickets = [
+  {id:'TKT-198',user:'GREENQUEEN',   cat:'ACCOUNT',   subject:'Cannot login to account',           status:'open',    date:'12 MAR 2026', msg:'I have been trying to login for 2 days. It says my password is wrong even after resetting.'},
+  {id:'TKT-197',user:'PLAYER_042',   cat:'POINTS',    subject:'Points not credited after submission',status:'open',    date:'12 MAR 2026', msg:'I submitted 3 entries yesterday (#SUB-2030, #SUB-2031, #SUB-2032) and only got points for one.'},
+  {id:'TKT-196',user:'RECYCLE_PRO',  cat:'SHOP',      subject:'Order not received',                 status:'open',    date:'11 MAR 2026', msg:'I redeemed an Eco Backpack 2 weeks ago and still have not received it. Order #ORD-0841.'},
+  {id:'TKT-195',user:'ZEROWASTE_KID',cat:'TECHNICAL', subject:'App crashes on photo upload',        status:'resolved',date:'10 MAR 2026', msg:'Every time I try to upload a photo the app freezes and crashes. Using Android 13.'},
+  {id:'TKT-194',user:'ECOWARRIOR_7', cat:'POINTS',    subject:'Wrong points awarded',               status:'pending', date:'10 MAR 2026', msg:'I recycled aluminum cans but got plastic bottle points (80 instead of 120).'},
+  {id:'TKT-193',user:'PLAYER_042',   cat:'ACCOUNT',   subject:'Username change request',            status:'pending', date:'09 MAR 2026', msg:'I would like to change my username from PLAYER_042 to ECOMASTER_042.'},
+  {id:'TKT-192',user:'GREENQUEEN',   cat:'SHOP',      subject:'Voucher code not working',           status:'pending', date:'09 MAR 2026', msg:'I redeemed a RM5 voucher but the code ECOV-2291 shows as invalid at the checkout.'},
+  {id:'TKT-191',user:'RECYCLE_PRO',  cat:'TECHNICAL', subject:'Leaderboard not updating',           status:'open',    date:'08 MAR 2026', msg:'My score updated but I am not showing on the leaderboard. Been 3 days now.'},
+  {id:'TKT-190',user:'ZEROWASTE_KID',cat:'POINTS',    subject:'Multiplier not applied during event',status:'open',    date:'08 MAR 2026', msg:'During the Coastal Cleanup event my submissions only got 1x points, not 3x.'},
+  {id:'TKT-189',user:'ECOWARRIOR_7', cat:'ACCOUNT',   subject:'Email not verified',                 status:'resolved',date:'07 MAR 2026', msg:'I signed up 3 days ago and never got the verification email.'},
+  {id:'TKT-188',user:'PLAYER_042',   cat:'SHOP',      subject:'Double charged points',              status:'open',    date:'07 MAR 2026', msg:'I accidentally clicked redeem twice and got charged 600 points instead of 300 for a tote bag.'},
+];
+
+var currentFilter = 'all';
+var viewTicket    = null;
+
+function renderTickets(list){
+  var tb = document.getElementById('ticketBody');
+  tb.innerHTML = '';
+  list.forEach(function(t){
+    var row = document.createElement('tr');
+    row.innerHTML =
+      '<td style="color:var(--cyan)">'+ t.id +'</td>'+
+      '<td>'+ t.user +'</td>'+
+      '<td class="td-muted">'+ t.cat +'</td>'+
+      '<td>'+ t.subject +'</td>'+
+      '<td><span class="badge badge-'+ t.status +'">'+ t.status.toUpperCase() +'</span></td>'+
+      '<td class="td-muted">'+ t.date +'</td>'+
+      '<td><div class="act-gap">'+
+        '<button class="act-btn act-btn-view" onclick="viewTkt(\''+ t.id +'\')">VIEW</button>'+
+        (t.status!=='resolved' ? '<button class="act-btn act-btn-resolve" onclick="quickResolve(\''+ t.id +'\')">RESOLVE</button>' : '')+
+      '</div></td>';
+    tb.appendChild(row);
+  });
+}
+
+function getFiltered(){
+  var q = (document.getElementById('searchInput').value||'').toLowerCase();
+  return tickets.filter(function(t){
+    var matchF = currentFilter==='all' || t.status===currentFilter;
+    var matchQ = !q || t.id.toLowerCase().includes(q) || t.user.toLowerCase().includes(q) || t.subject.toLowerCase().includes(q);
+    return matchF && matchQ;
+  });
+}
+
+function filterTickets(){ renderTickets(getFiltered()); }
+
+function setFilter(f, btn){
+  currentFilter = f;
+  document.querySelectorAll('[data-f]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderTickets(getFiltered());
+}
+
+function viewTkt(id){
+  var t = tickets.find(function(x){ return x.id===id; });
+  if(!t) return;
+  viewTicket = t;
+  document.getElementById('tktModalTitle').textContent = '>> TICKET ' + t.id;
+  document.getElementById('vId').textContent   = t.id;
+  document.getElementById('vUser').textContent = t.user;
+  document.getElementById('vCat').textContent  = t.cat;
+  document.getElementById('vMsg').textContent  = t.msg;
+  document.getElementById('vStatus').innerHTML = '<span class="badge badge-'+ t.status +'">'+ t.status.toUpperCase() +'</span>';
+  document.getElementById('replyText').value   = '';
+  document.getElementById('resolveBtn').style.display = t.status==='resolved' ? 'none' : '';
+  openModal('tktModal');
+}
+
+function sendReply(){
+  var txt = document.getElementById('replyText').value.trim();
+  if(!txt){ alert('Please enter a reply'); return; }
+  alert('Reply sent to ' + viewTicket.user + '.');
+  if(viewTicket){ viewTicket.status = 'pending'; }
+  closeModal('tktModal');
+  renderTickets(getFiltered());
+}
+
+function resolveTicket(){
+  if(viewTicket){ viewTicket.status = 'resolved'; }
+  closeModal('tktModal');
+  renderTickets(getFiltered());
+}
+
+function quickResolve(id){
+  var t = tickets.find(function(x){ return x.id===id; });
+  if(t){ t.status = 'resolved'; }
+  renderTickets(getFiltered());
+}
+
+function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+
+document.querySelectorAll('.smodal-bk').forEach(function(bk){
+  bk.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); });
+});
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') document.querySelectorAll('.smodal-bk.open').forEach(function(b){ closeModal(b.id); }); });
+
+/* fbtn base style */
+document.querySelectorAll('[data-f]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('[data-f]').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+  });
+});
+
+renderTickets(tickets);
+</script>
+</body>
+</html>
