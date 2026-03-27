@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EcoPoints &mdash; Achievements</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="achievements.css"/>
 </head>
-<body>
+<body onload="requireLogin();">
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="logo">ECO<span>POINTS</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="index.html#features">FEATURES</a></li>
-    <li><a href="achievements.html" class="active">ACHIEVEMENTS</a></li>
-    <li><a href="index.html#events">EVENTS</a></li>
-    <li><a href="index.html#shop">SHOP</a></li>
-    <li><a href="staff-login.html">STAFF PORTAL</a></li>
-  </ul>
-  <div class="nav-user" style="font-size:.7rem;color:var(--muted);letter-spacing:1px">
-    USER: <span style="color:var(--cyan)">PLAYER_042</span>
-    &nbsp;|&nbsp;
-    <a href="#" style="color:var(--cyan2);text-decoration:none">[ LOGOUT ]</a>
-  </div>
-</nav>
+<header>
+    <a class="logo" href="Homepage.html">ECOPOINTS</a>
+    <nav>
+      <a href="Homepage.html" class="active">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="achievements.html">ACHIEVEMENTS</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="header-right">
+      <span class="user-badge">USER: TP045231</span>
+      <span>|</span>
+      <span style="color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:11px;">&#11042; <span id="header-pts">1,250</span> PTS</span>
+      <span>|</span>
+      <button class="logout-btn" onclick="window.location.href='index.html'">[ LOGOUT ]</button>
+    </div>
+  </header>
 
 <!-- PAGE -->
 <div class="page">
@@ -353,6 +353,7 @@
   </div>
 </div>
 
+<script src="script.js"></script>
 <script>
   var activBtn = null;
 

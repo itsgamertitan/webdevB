@@ -10,21 +10,22 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="logo">ECO<span>POINTS</span></a>
-  <ul class="nav-links">
-    <li><a href="staff.html">DASHBOARD</a></li>
-    <li><a href="staff-products.html">PRODUCTS</a></li>
-    <li><a href="staff-support.html" class="active">SUPPORT</a></li>
-    <li><a href="staff-recycling.html">RECYCLING</a></li>
-    <li><a href="achievements.html">ACHIEVEMENTS</a></li>
-  </ul>
-  <div style="font-size:.65rem;color:var(--muted);letter-spacing:1px;display:flex;align-items:center;gap:14px">
-    <span>STAFF: <span style="color:var(--cyan)">JESS_01</span> <span class="staff-nav-badge">STAFF</span></span>
-    <a href="staff-login.html" class="btn btn-ghost" style="font-size:.6rem;padding:6px 12px">LOGOUT</a>
+<header>
+  <a class="logo" href="Homepage.html">ECOPOINTS</a>
+  <nav>
+    <a href="Homepage.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="profile.html">PROFILE</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+  <div class="header-right">
+    <span class="user-badge">STAFF: JESS_01</span>
+    <span>|</span>
+    <span style="color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:11px;">&#11042; <span id="header-pts">1,250</span> PTS</span>
+    <span>|</span>
+    <button class="logout-btn" onclick="window.location.href='staff-login.html'">[ LOGOUT ]</button>
   </div>
-</nav>
+</header>
 
 <div class="staff-page">
 

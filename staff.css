@@ -1,10 +1,3 @@
-/* =============================================================
-   EcoPoints — staff.css
-   Shared styles for all staff-side pages.
-   Requires style.css to be loaded first.
-   ============================================================= */
-
-/* ── STAFF NAV (overrides base nav) ── */
 .staff-nav-badge {
   font-size: .55rem; letter-spacing: 2px; padding: 3px 8px;
   background: var(--amber); color: #000; margin-left: 10px;

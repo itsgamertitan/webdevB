@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPoints — Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="Homepage.html">ECOPOINTS</a>
+    <nav>
+      <a href="Homepage.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="achievements.html">ACHIEVEMENTS</a>
+      <a href="profile.html" class="active">PROFILE</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="header-right">
+      <span class="user-badge">USER: TP045231</span>
+      <span>|</span>
+      <span style="color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:11px;">&#11042; <span id="header-pts">1,250</span> PTS</span>
+      <span>|</span>
+      <button class="logout-btn" onclick="window.location.href='index.html'">[ LOGOUT ]</button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <div class="section-prefix">>> USER_PROFILE</div>
+    <h1 class="section-title">MY <span class="accent">PROFILE</span></h1>
+    <hr class="divider">
+
+    <!-- PROFILE HEADER CARD -->
+    <div class="profile-header-card">
+      <div class="avatar-ring">
+        &#127807;
+        <div class="avatar-overlay">CHANGE</div>
+      </div>
+      <div class="profile-info">
+        <div class="profile-tag">// STUDENT ACCOUNT</div>
+        <div class="profile-name" contenteditable="true" title="Click to edit">Alex Tan Wei Ming</div>
+        <div class="profile-tp">TP045231 &middot; Computer Science (SE) &middot; Y2S1</div>
+        <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+          <div class="badge earned"><div class="dot"></div> ECO PIONEER</div>
+          <div class="badge earned"><div class="dot"></div> RECYCLER LVL 3</div>
+          <div class="badge"><div class="dot"></div> GREEN CHAMPION</div>
+        </div>
+      </div>
+      <div class="pts-display">
+        <div class="pts-label">// Current Balance</div>
+        <div class="pts-number">1,250</div>
+        <div class="pts-unit">ECOPOINTS</div>
+      </div>
+    </div>
+
+    <!-- PROFILE GRID -->
+    <div class="profile-grid">
+      <div>
+        <div class="profile-card">
+          <div class="profile-card-title">Bio</div>
+          <textarea class="bio-textarea" placeholder="Write something about yourself...">Passionate about sustainability and tech. Trying to hit 5000 EcoPoints before semester ends! ♻️</textarea>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-card-title">Activity Stats</div>
+          <div class="stat-boxes">
+            <div class="stat-box cyan">
+              <div class="stat-num">47</div>
+              <div class="stat-lbl">ITEMS RECYCLED</div>
+            </div>
+            <div class="stat-box green">
+              <div class="stat-num">3.2<span style="font-size:14px;">kg</span></div>
+              <div class="stat-lbl">WASTE DIVERTED</div>
+            </div>
+            <div class="stat-box yellow">
+              <div class="stat-num">9</div>
+              <div class="stat-lbl">ACHIEVEMENTS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIXEL ART -->
+      <div>
+        <div class="profile-card">
+          <div class="profile-card-title">Profile Flair</div>
+          <div class="pixel-art-area">
+            <div class="pixel-preview" id="pixel-grid"></div>
+          </div>
+          <div class="pa-label">PIXEL AVATAR</div>
+          <div style="display:flex; gap:8px; margin-top:16px;">
+            <button class="btn-ghost" style="flex:1; font-size:10px;" onclick="randomizePixels()">RANDOMIZE</button>
+            <button class="btn-cyan" style="flex:1; font-size:10px;" onclick="showNotif('Avatar saved!', 'success')">SAVE AVATAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOMIZATION -->
+    <div class="customization-section">
+      <div style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--purple-glow); text-transform:uppercase; margin-bottom:20px;">// Profile Customization</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+        <div>
+          <div style="font-family:'Share Tech Mono',monospace; font-size:9px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">Earned Badges</div>
+          <div class="badge-grid">
+            <div class="badge earned"><div class="dot"></div> Eco Pioneer</div>
+            <div class="badge earned"><div class="dot"></div> First Recycle</div>
+            <div class="badge earned"><div class="dot"></div> Recycler Lv3</div>
+            <div class="badge locked"><div class="dot"></div> Green Champ</div>
+            <div class="badge locked"><div class="dot"></div> Planet Saver</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Share Tech Mono',monospace; font-size:9px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">Profile Theme</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-family:'Share Tech Mono',monospace; font-size:11px; color:var(--text-secondary);">
+              <input type="radio" name="theme" checked style="accent-color:var(--purple-bright);"> Cyber Violet
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-family:'Share Tech Mono',monospace; font-size:11px; color:var(--text-secondary);">
+              <input type="radio" name="theme" style="accent-color:var(--cyan);"> Arctic Cyan
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-family:'Share Tech Mono',monospace; font-size:11px; color:var(--text-secondary);">
+              <input type="radio" name="theme" style="accent-color:var(--green);"> Matrix Green
+            </label>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Share Tech Mono',monospace; font-size:9px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;">Display Title</div>
+          <select style="width:100%; background:var(--bg-card); border:1px solid var(--border); color:var(--text-primary); padding:10px 12px; font-family:'Share Tech Mono',monospace; font-size:11px; outline:none; cursor:pointer;">
+            <option>ECO PIONEER</option>
+            <option>RECYCLER LV.3</option>
+            <option>GREEN WARRIOR</option>
+            <option>PLANET GUARDIAN</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAVE BAR -->
+    <div class="profile-save-bar">
+      <span class="save-msg" id="save-msg">&#10003; PROFILE SAVED</span>
+      <a href="shop.html" class="btn-ghost">&#8592; BACK</a>
+      <button class="btn-primary" style="width:auto; padding:12px 32px;" onclick="saveProfile()">[ SAVE CHANGES ]</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-footer">ECOPOINTS</span>
+        <p>A sustainability rewards platform for APU students. Recycle, earn, and redeem — building a greener campus together.</p>
+        <div class="footer-socials">
+          <div class="social-icon">&#9672;</div>
+          <div class="social-icon">&#10005;</div>
+          <div class="social-icon">&#11042;</div>
+          <div class="social-icon">&#9654;</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>// Navigate</h4>
+        <a href="shop.html">Shop</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="#">Events</a>
+        <a href="profile.html">My Profile</a>
+      </div>
+      <div class="footer-col">
+        <h4>// Resources</h4>
+        <a href="#">How It Works</a>
+        <a href="#">Recycling Guide</a>
+        <a href="#">FAQs</a>
+        <a href="#">Terms of Use</a>
+      </div>
+      <div class="footer-col">
+        <h4>// Contact</h4>
+        <a href="contact.html">ecopoints@apu.edu.my</a>
+        <a href="contact.html">Student Support</a>
+        <a href="contact.html">Report an Issue</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 ECOPOINTS &mdash; APU GREEN INITIATIVE</span>
+      <span>SYS_STATUS: <span style="color:var(--green);">ONLINE</span> | v2.4.1</span>
+    </div>
+  </footer>
+
+  <div class="notif-stack" id="notif-stack"></div>
+
+  <script>
+    function saveProfile() {
+      var msg = document.getElementById('save-msg');
+      msg.classList.add('visible');
+      showNotif('Profile updated successfully.', 'success');
+      setTimeout(function() { msg.classList.remove('visible'); }, 3000);
+    }
+
+    var PALETTE = ['#1a0a3c','#1a0a3c','#7b2fff','#00f5d4','#ffd60a','#ff3864','#39ff14','#ff6b35'];
+
+    function randomizePixels() {
+      document.querySelectorAll('.pixel-cell').forEach(function(c) {
+        c.style.background = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+      });
+    }
+
+    function buildPixelGrid() {
+      var grid = document.getElementById('pixel-grid');
+      if (!grid) return;
+      var pattern = [
+        0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,
+        0,2,2,3,3,2,2,0,0,2,2,3,3,2,2,0,
+        2,2,3,3,3,3,2,2,2,2,3,3,3,3,2,2,
+        2,3,3,1,3,3,3,2,2,3,3,3,1,3,3,2,
+        2,3,3,3,3,3,3,2,2,3,3,3,3,3,3,2,
+        2,2,3,4,3,4,2,2,2,2,3,4,3,4,2,2,
+        0,2,2,3,3,2,2,0,0,2,2,3,3,2,2,0,
+        0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,
+        0,0,0,5,5,5,5,5,5,5,5,5,0,0,0,0,
+        0,0,5,5,5,5,5,5,5,5,5,5,5,0,0,0,
+        0,5,5,0,5,5,5,5,5,5,5,0,5,5,0,0,
+        0,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,
+        0,0,5,5,0,5,5,0,0,5,5,0,5,5,0,0,
+        0,0,0,5,5,5,0,0,0,0,5,5,5,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+      ];
+      var colors = ['#1a0a3c','#7b2fff','#ffd60a','#ff3864','#ff6b35','#00f5d4'];
+      grid.innerHTML = '';
+      pattern.forEach(function(v) {
+        var cell = document.createElement('div');
+        cell.className = 'pixel-cell';
+        cell.style.background = colors[v] || '#1a0a3c';
+        grid.appendChild(cell);
+      });
+    }
+
+    function showNotif(msg, type) {
+      var stack = document.getElementById('notif-stack');
+      var n = document.createElement('div');
+      n.className = 'notif ' + (type || '');
+      n.textContent = msg;
+      stack.appendChild(n);
+      setTimeout(function() {
+        n.style.opacity = '0'; n.style.transform = 'translateX(20px)'; n.style.transition = 'all 0.3s';
+        setTimeout(function() { n.remove(); }, 300);
+      }, 3000);
+    }
+
+    buildPixelGrid();
+  </script>
+</body>
+</html>
