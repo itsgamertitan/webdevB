@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPoints — Contact</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="Homepage.html">ECOPOINTS</a>
+    <nav>
+      <a href="Homepage.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="achievements.html">ACHIEVEMENTS</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+    <div class="header-right">
+      <span class="user-badge">USER: TP045231</span>
+      <span>|</span>
+      <span style="color:var(--yellow); font-family:'Share Tech Mono',monospace; font-size:11px;">&#11042; <span id="header-pts">1,250</span> PTS</span>
+      <span>|</span>
+      <button class="logout-btn" onclick="window.location.href='index.html'">[ LOGOUT ]</button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <div class="section-prefix">>> SUPPORT_CHANNEL</div>
+    <h1 class="section-title">CONTACT <span class="accent">US</span></h1>
+    <p class="section-subtitle">Got a question, issue, or just want to say hi? We're here.</p>
+    <hr class="divider">
+
+    <div class="contact-grid">
+      <!-- CONTACT FORM -->
+      <div class="contact-card">
+        <div style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--purple-glow); text-transform:uppercase; margin-bottom:24px;">// Send a Message</div>
+
+        <div class="input-group">
+          <label class="input-label">Your Name</label>
+          <input class="input-field" type="text" placeholder="Alex Tan" id="c-name">
+        </div>
+        <div class="input-group">
+          <label class="input-label">TP Number</label>
+          <input class="input-field" type="text" placeholder="TP000000" id="c-tp">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Subject</label>
+          <select class="input-field" id="c-subject" style="cursor:pointer;">
+            <option value="" disabled selected>Select a topic</option>
+            <option>Points not credited</option>
+            <option>Redemption issue</option>
+            <option>Account problem</option>
+            <option>Upload rejected</option>
+            <option>General enquiry</option>
+            <option>Bug report</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Message</label>
+          <textarea class="bio-textarea" id="c-msg" placeholder="Describe your issue or question in detail..." style="min-height:140px;"></textarea>
+        </div>
+        <button class="btn-primary" onclick="sendMessage()">[ SEND MESSAGE ]</button>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div>
+        <div class="contact-card" style="margin-bottom:20px;">
+          <div style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--purple-glow); text-transform:uppercase; margin-bottom:20px;">// Get in Touch</div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">&#9993;</div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-value">ecopoints@apu.edu.my</div>
+              <div class="contact-info-sub">Typically replied within 1 working day</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">&#128205;</div>
+            <div>
+              <div class="contact-info-label">Location</div>
+              <div class="contact-info-value">Sustainability Office</div>
+              <div class="contact-info-sub">Block B, Level 2, APU Campus</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">&#128337;</div>
+            <div>
+              <div class="contact-info-label">Office Hours</div>
+              <div class="contact-info-value">Mon – Fri, 9:00 AM – 5:00 PM</div>
+              <div class="contact-info-sub">Closed on public holidays</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--purple-glow); text-transform:uppercase; margin-bottom:16px;">// FAQ Quick Links</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="#" style="font-size:13px; color:var(--text-secondary); text-decoration:none; padding:10px 14px; border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--cyan)'; this.style.color='var(--cyan)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-secondary)'">How do I earn EcoPoints? <span>&#8594;</span></a>
+            <a href="#" style="font-size:13px; color:var(--text-secondary); text-decoration:none; padding:10px 14px; border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--cyan)'; this.style.color='var(--cyan)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-secondary)'">Why was my upload rejected? <span>&#8594;</span></a>
+            <a href="#" style="font-size:13px; color:var(--text-secondary); text-decoration:none; padding:10px 14px; border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--cyan)'; this.style.color='var(--cyan)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-secondary)'">How do I redeem rewards? <span>&#8594;</span></a>
+            <a href="#" style="font-size:13px; color:var(--text-secondary); text-decoration:none; padding:10px 14px; border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--cyan)'; this.style.color='var(--cyan)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-secondary)'">Points not showing up? <span>&#8594;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-footer">ECOPOINTS</span>
+        <p>A sustainability rewards platform for APU students. Recycle, earn, and redeem — building a greener campus together.</p>
+        <div class="footer-socials">
+          <div class="social-icon">&#9672;</div>
+          <div class="social-icon">&#10005;</div>
+          <div class="social-icon">&#11042;</div>
+          <div class="social-icon">&#9654;</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>// Navigate</h4>
+        <a href="shop.html">Shop</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="#">Events</a>
+        <a href="profile.html">My Profile</a>
+      </div>
+      <div class="footer-col">
+        <h4>// Resources</h4>
+        <a href="#">How It Works</a>
+        <a href="#">Recycling Guide</a>
+        <a href="#">FAQs</a>
+        <a href="#">Terms of Use</a>
+      </div>
+      <div class="footer-col">
+        <h4>// Contact</h4>
+        <a href="contact.html">ecopoints@apu.edu.my</a>
+        <a href="contact.html">Student Support</a>
+        <a href="contact.html">Report an Issue</a>
+        <a href="index.html">Staff Login</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 ECOPOINTS &mdash; APU GREEN INITIATIVE</span>
+      <span>SYS_STATUS: <span style="color:var(--green);">ONLINE</span> | v2.4.1</span>
+    </div>
+  </footer>
+
+  <div class="notif-stack" id="notif-stack"></div>
+
+  <script>
+    function sendMessage() {
+      var name    = document.getElementById('c-name').value.trim();
+      var tp      = document.getElementById('c-tp').value.trim();
+      var subject = document.getElementById('c-subject').value;
+      var msg     = document.getElementById('c-msg').value.trim();
+
+      if (!name || !tp || !subject || !msg) { showNotif('Please fill in all fields before sending.', 'error'); return; }
+
+      showNotif('Sending message...', '');
+      setTimeout(function() {
+        showNotif('Message sent! We will reply to your APU email within 1 working day.', 'success');
+        document.getElementById('c-name').value = '';
+        document.getElementById('c-tp').value   = '';
+        document.getElementById('c-subject').value = '';
+        document.getElementById('c-msg').value  = '';
+      }, 1000);
+    }
+
+    function showNotif(msg, type) {
+      var stack = document.getElementById('notif-stack');
+      var n = document.createElement('div');
+      n.className = 'notif ' + (type || '');
+      n.textContent = msg;
+      stack.appendChild(n);
+      setTimeout(function() {
+        n.style.opacity = '0'; n.style.transform = 'translateX(20px)'; n.style.transition = 'all 0.3s';
+        setTimeout(function() { n.remove(); }, 300);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>

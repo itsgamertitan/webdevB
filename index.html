@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPoints — Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,47,255,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,245,212,0.08) 0%, transparent 60%),
+        var(--bg-deep);
+      align-items: center;
+      justify-content: center;
+    }
+    .login-wrap { width: 100%; max-width: 480px; padding: 24px; }
+    .login-logo { text-align: center; margin-bottom: 48px; }
+    .login-logo .brand { font-family: 'Orbitron', monospace; font-size: 28px; font-weight: 900; color: var(--cyan); text-shadow: var(--glow-cyan); letter-spacing: 6px; display: block; margin-bottom: 6px; }
+    .login-logo .brand::before { content: '>> '; color: var(--purple-bright); }
+    .login-logo .tagline { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; }
+    .login-card { background: rgba(14,14,24,0.95); border: 1px solid var(--border); border-top: 2px solid var(--cyan); padding: 40px; position: relative; backdrop-filter: blur(20px); box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+    .login-card::before { content: ''; position: absolute; top: 0; left: 24px; width: 60px; height: 2px; background: var(--purple-bright); }
+    .login-tabs { display: flex; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .login-tab { flex: 1; padding: 12px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--text-dim); cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .login-tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+    .login-hint { text-align: center; margin-top: 16px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
+    .login-hint a { color: var(--purple-glow); cursor: pointer; text-decoration: none; }
+    .login-hint a:hover { color: var(--cyan); }
+    .staff-link-wrap { text-align: center; margin-top: 20px; }
+    .staff-link { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); cursor: pointer; text-decoration: underline; transition: color 0.2s; letter-spacing: 1px; }
+    .staff-link:hover { color: var(--yellow); }
+  </style>
+</head>
+<body>
+
+  <div class="login-wrap">
+    <div class="login-logo">
+      <span class="brand">ECOPOINTS</span>
+      <span class="tagline">Rewarding a Greener Campus</span>
+    </div>
+
+    <div class="login-card">
+      <div class="login-tabs">
+        <div class="login-tab active" onclick="switchTab('login')">STUDENT LOGIN</div>
+        <div class="login-tab" onclick="window.location.href='signup.html'">REGISTER</div>
+      </div>
+
+      <div id="tab-login" class="tab-pane active">
+        <div class="input-group">
+          <label class="input-label">TP Number</label>
+          <input class="input-field" type="text" id="tp-input" placeholder="TP000000" maxlength="8">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Password</label>
+          <input class="input-field" type="password" id="pw-input" placeholder="••••••••">
+        </div>
+        <button class="btn-primary" onclick="doLogin()">[ INITIALIZE SESSION ]</button>
+        <div class="login-hint">
+          Forgot password? <a onclick="showNotif('Reset link sent to your APU email.', 'success')">Reset via APU Mail</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="staff-link-wrap">
+      <span class="staff-link" onclick="window.location.href='shop.html'">Staff / Admin Portal &#8594;</span>
+    </div>
+  </div>
+
+  <div class="notif-stack" id="notif-stack"></div>
+
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.login-tab').forEach(function(t, i) {
+        t.classList.toggle('active', (i === 0 && tab === 'login') || (i === 1 && tab === 'signup'));
+      });
+      document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById('tab-' + tab).classList.add('active');
+    }
+
+    function doLogin() {
+      var tp = document.getElementById('tp-input').value.trim();
+      var pw = document.getElementById('pw-input').value.trim();
+      if (!tp || !pw) { showNotif('Please enter your TP number and password.', 'error'); return; }
+      showNotif('Authenticating...', '');
+      setTimeout(function() {
+        showNotif('Login successful. Welcome back!', 'success');
+        setTimeout(function() { window.location.href = 'Homepage.html'; }, 800);
+      }, 800);
+    }
+
+    function showNotif(msg, type) {
+      var stack = document.getElementById('notif-stack');
+      var n = document.createElement('div');
+      n.className = 'notif ' + (type || '');
+      n.textContent = msg;
+      stack.appendChild(n);
+      setTimeout(function() {
+        n.style.opacity = '0'; n.style.transform = 'translateX(20px)'; n.style.transition = 'all 0.3s';
+        setTimeout(function() { n.remove(); }, 300);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

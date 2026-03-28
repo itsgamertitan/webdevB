@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPoints — Register</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background:
+        radial-gradient(ellipse 70% 50% at 30% 0%, rgba(123,47,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 90% 90%, rgba(0,245,212,0.06) 0%, transparent 60%),
+        var(--bg-deep);
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .signup-wrap { width: 100%; max-width: 560px; }
+    .signup-logo { text-align: center; margin-bottom: 36px; }
+    .signup-logo .brand { font-family: 'Orbitron', monospace; font-size: 22px; font-weight: 900; color: var(--cyan); text-shadow: var(--glow-cyan); letter-spacing: 5px; display: block; margin-bottom: 4px; }
+    .signup-logo .brand::before { content: '>> '; color: var(--purple-bright); }
+    .signup-logo .sub { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; }
+    .signup-card { background: rgba(14,14,24,0.95); border: 1px solid var(--border); border-top: 2px solid var(--purple-bright); padding: 40px; position: relative; backdrop-filter: blur(20px); box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+    .signup-card::before { content: ''; position: absolute; top: 0; left: 24px; width: 60px; height: 2px; background: var(--cyan); }
+    .card-title { font-family: 'Orbitron', monospace; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--text-primary); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .card-title::before { content: '// '; color: var(--text-dim); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .hint { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 1px; margin-top: 6px; }
+    .divider-line { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .back-link { text-align: center; margin-top: 20px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
+    .back-link a { color: var(--purple-glow); text-decoration: none; }
+    .back-link a:hover { color: var(--cyan); }
+    .terms-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
+    .terms-row input { accent-color: var(--purple-bright); margin-top: 2px; flex-shrink: 0; }
+    .terms-row label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-secondary); letter-spacing: 1px; line-height: 1.6; }
+    .terms-row a { color: var(--purple-glow); text-decoration: none; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="signup-wrap">
+    <div class="signup-logo">
+      <span class="brand">ECOPOINTS</span>
+      <span class="sub">Create Your Account</span>
+    </div>
+
+    <div class="signup-card">
+      <div class="card-title">Student Registration</div>
+
+      <div class="form-row">
+        <div class="input-group">
+          <label class="input-label">First Name</label>
+          <input class="input-field" type="text" placeholder="First name" id="fname">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Last Name</label>
+          <input class="input-field" type="text" placeholder="Last name" id="lname">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">TP Number</label>
+        <input class="input-field" type="text" placeholder="TP000000" maxlength="8" id="tp">
+        <div class="hint">Your APU student ID number</div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">APU Email</label>
+        <input class="input-field" type="email" placeholder="tp000000@mail.apu.edu.my" id="email">
+        <div class="hint">Must be your official APU email address</div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Programme</label>
+        <select class="input-field" id="programme" style="cursor:pointer;">
+          <option value="" disabled selected>Select your programme</option>
+          <option>Computer Science (Software Engineering)</option>
+          <option>Computer Science (Cybersecurity)</option>
+          <option>Computer Science (Data Science)</option>
+          <option>Information Technology</option>
+          <option>Artificial Intelligence</option>
+          <option>Business Information Systems</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="input-group">
+          <label class="input-label">Year</label>
+          <select class="input-field" style="cursor:pointer;">
+            <option value="" disabled selected>Year</option>
+            <option>Year 1</option>
+            <option>Year 2</option>
+            <option>Year 3</option>
+            <option>Year 4</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Semester</label>
+          <select class="input-field" style="cursor:pointer;">
+            <option value="" disabled selected>Sem</option>
+            <option>Semester 1</option>
+            <option>Semester 2</option>
+            <option>Semester 3</option>
+          </select>
+        </div>
+      </div>
+
+      <hr class="divider-line">
+
+      <div class="form-row">
+        <div class="input-group">
+          <label class="input-label">Password</label>
+          <input class="input-field" type="password" placeholder="Min 8 characters" id="pw1">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Confirm Password</label>
+          <input class="input-field" type="password" placeholder="Re-enter password" id="pw2">
+        </div>
+      </div>
+      <div class="hint" style="margin-top:-16px; margin-bottom:24px;">Use at least 8 characters with a mix of letters and numbers</div>
+
+      <div class="terms-row">
+        <input type="checkbox" id="terms">
+        <label for="terms">
+          I agree to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+          I understand that my EcoPoints activity may be reviewed by staff.
+        </label>
+      </div>
+
+      <button class="btn-primary" onclick="doRegister()">[ CREATE ACCOUNT ]</button>
+    </div>
+
+    <div class="back-link">
+      Already have an account? <a href="index.html">&#8592; Back to Login</a>
+    </div>
+  </div>
+
+  <div class="notif-stack" id="notif-stack"></div>
+
+  <script>
+    function doRegister() {
+      var fname = document.getElementById('fname').value.trim();
+      var lname = document.getElementById('lname').value.trim();
+      var tp    = document.getElementById('tp').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var pw1   = document.getElementById('pw1').value;
+      var pw2   = document.getElementById('pw2').value;
+      var terms = document.getElementById('terms').checked;
+
+      if (!fname || !lname || !tp || !email) { showNotif('Please fill in all required fields.', 'error'); return; }
+      if (!tp.toUpperCase().startsWith('TP'))  { showNotif('TP number must start with TP.', 'error'); return; }
+      if (pw1.length < 8)  { showNotif('Password must be at least 8 characters.', 'error'); return; }
+      if (pw1 !== pw2)     { showNotif('Passwords do not match.', 'error'); return; }
+      if (!terms)          { showNotif('Please accept the terms and conditions.', 'error'); return; }
+
+      showNotif('Creating your account...', '');
+      setTimeout(function() {
+        showNotif('Account created! Check your APU email to verify.', 'success');
+        setTimeout(function() { window.location.href = 'index.html'; }, 1500);
+      }, 1000);
+    }
+
+    function showNotif(msg, type) {
+      var stack = document.getElementById('notif-stack');
+      var n = document.createElement('div');
+      n.className = 'notif ' + (type || '');
+      n.textContent = msg;
+      stack.appendChild(n);
+      setTimeout(function() {
+        n.style.opacity = '0'; n.style.transform = 'translateX(20px)'; n.style.transition = 'all 0.3s';
+        setTimeout(function() { n.remove(); }, 300);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
