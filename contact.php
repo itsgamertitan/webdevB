@@ -1,12 +1,11 @@
 <?php
-include "db_conn.php"; //
+include "db_conn.php"; 
 
 $msg = "";
 if (isset($_POST['send'])) {
-    // Simple way: Just show an alert for now (or INSERT into DB if you want extra marks)
     $name = $_POST['name'];
     $message = $_POST['message'];
-    // Ideally, you'd insert this into a 'messages' table here
+    
     $msg = "MESSAGE SENT! ADMIN WILL REPLY SOON.";
 }
 ?>

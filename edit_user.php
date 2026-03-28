@@ -1,30 +1,30 @@
 <?php
 session_start();
-include "db_conn.php"; //
+include "db_conn.php"; 
 
-// SECURITY: Only Admins can access this page
+
 if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
     header("Location: index.php");
     exit();
 }
 
-// 1. GET THE ID FROM URL
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    // Fetch the user's current data
+    
     $sql = "SELECT * FROM users WHERE user_id = $id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 }
 
-// 2. UPDATE THE DATA WHEN FORM IS SUBMITTED
+
 if (isset($_POST['update'])) {
     $username = $_POST['username'];
     $full_name = $_POST['full_name'];
     $email = $_POST['email'];
     $role = $_POST['role'];
 
-    // - UPDATE Query
+    
     $sql = "UPDATE users SET username='$username', full_name='$full_name', email='$email', role='$role' WHERE user_id=$id";
 
     if (mysqli_query($conn, $sql)) {

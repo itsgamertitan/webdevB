@@ -1,33 +1,33 @@
 <?php
-session_start(); //
-include "db_conn.php"; //
+session_start(); 
+include "db_conn.php"; 
 
-// If the user is ALREADY logged in, send them straight to the dashboard
+
 if (isset($_SESSION['username']) && $_SESSION['role'] === 'admin') {
     header("Location: admin_dashboard.php");
     exit();
 }
 
-// LOGIN LOGIC
+
 if (isset($_POST['login'])) {
-    // - Get data from form
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // - Check database for user
+    
     $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         
-        // Check if they are an Admin
+        
         if ($row['role'] == 'admin') {
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['role'];
             
-            header("Location: admin_dashboard.php"); // Redirect to Dashboard
+            header("Location: admin_dashboard.php"); 
             exit();
         } else {
             $error = "Access Denied: You are not an Admin.";
